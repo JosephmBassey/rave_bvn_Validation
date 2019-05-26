@@ -66,8 +66,7 @@ app.post('/customer', async (req, res) => {
       res.redirect('/')
       return
    }
-    const url = ` https://ravesandboxapi.flutterwave.com/v2/kyc/bvn//${bvnNumber}?seckey=${process.env.FLWSECK}`
-    
+    const url = `https://ravesandboxapi.flutterwave.com/v2/kyc/bvn/${bvnNumber}?seckey=${process.env.FLWSECK}`
 
       const response = await fetch(url)
     const customerBVNData = await response.json();
@@ -78,7 +77,9 @@ app.post('/customer', async (req, res) => {
     }
     res.render('customer',{customer: customerBVNData.data, msg:'BVN successfully Validated, Welcome 👍'})
   } catch (err) {
-      console.log(err)
+    console.log(err)
+    req.flash('error', 'Oops We encounter an error validating your BVN, Try again')
+    res.redirect('/')
   }
 })
 
@@ -88,3 +89,7 @@ app.listen(PORT , () => {
   console.log(`Server Started on port port! ${PORT}`);
 });
 
+// FLWSECK - 9b4748a667eeb35b5dac311752796fa0 - X
+// curl --request GET \
+//   --url https://ravesandboxapi.flutterwave.com/v2/kyc/bvn/12345678901?seckey=FLWSECK-9b4748a667eeb35b5dac311752796fa0-X\
+//   --header 'content-type: application/json'
