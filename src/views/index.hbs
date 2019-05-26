@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Customers On Boarding</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Customers On Boarding</a>
+      <ul class="right hide-on-med-and-down">
+        <button data-target="modal1" class="btn waves-effect waves-light orange modal-trigger">Get
+          Started</button>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#" data-target="modal1" class="modal-trigger">Get Started</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Customers On Boarding</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">You are welcome to our platform, Please click the button below and enter your
+          correct Bank Verification details(BVN) details.</h5>
+      </div>
+      <div class="row center">
+        {{#if error_flash }} {{#each error_flash }}
+        <span class="toast red" style="display: none">{{this}}</span>
+
+        {{/each}} {{/if}}
+
+        <button data-target="modal1" class="btn-large waves-effect waves-light orange modal-trigger">Get
+          Started</button>
+      </div>
+      <br><br>
+    </div>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h5>Enter Bank Verification Number(BVN) to continue</h5>
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <form action="/customer" method="POST">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">credit_card
+                  </i>
+                  <input type="text" name="bvnNumber" id="autocomplete-input" class="autocomplete">
+                  <label for="autocomplete-input">Enter BVN </label>
+
+                </div>
+
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons right">send</i>
+            </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">close</a>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+
+</html>
