@@ -1,6 +1,6 @@
 # A simple express web app that Validate BVN number using https://developer.flutterwave.com/reference#bvn-validation API
 
-## Development env :
+## STEPS TO START THE WEB APP :
 
 clone the repo and cd to the Project Dir.
 
